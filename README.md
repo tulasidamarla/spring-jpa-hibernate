@@ -84,7 +84,7 @@ Here is the sample jpaContext file.
 	
 	</beans>
 
-To configure all the above 3 configuration using java, here is the sample.
+To configure all the above 3 configuration using java, 
 
 	@Bean
 	  public DataSource dataSource() {
