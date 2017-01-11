@@ -8,11 +8,13 @@ Objects are created using JPQL syntax.<br>
 Projection objects are not necessarily JPA entities.<br>
 Projection objects need parameterized constructors. 
 
-Projection Example
-------------------
+Using Projection
+----------------
 
 	Query query = em.createQuery("select new com.web.report.model.EventReport(e.name, a.name,a.email)"
 				+"from Event e, Attendee a where e.id = a.event.id");
+				
+				
 				
 				 
 

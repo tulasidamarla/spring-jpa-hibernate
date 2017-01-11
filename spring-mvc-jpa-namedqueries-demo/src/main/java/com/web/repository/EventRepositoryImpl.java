@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -27,11 +27,9 @@ public class EventRepositoryImpl implements EventRepository {
 	}
 
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<EventReport> findAll() {
-		Query query = em.createQuery("select new com.web.report.model.EventReport(e.name, a.name,a.email)"
-				+"from Event e, Attendee a where e.id = a.event.id");
+		TypedQuery<EventReport> query= em.createNamedQuery(Event.FIND_EVENT_REPORT, EventReport.class);
 		return query.getResultList();
 	}
 
