@@ -156,5 +156,6 @@ To make the PersistenceContext work in a transactional context, the following co
 2)Mark the Java configuration class with @EnableTransactionManagement
 
 Note: If it is xml, For step 2, use the following configuration.
+
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
