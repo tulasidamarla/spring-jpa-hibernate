@@ -32,3 +32,9 @@ Note: Fetch type lazy will fail because jpa session is valid with in the transac
 	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
 
+JPQL
+----
+JPQL is Java persistence Query Language. JPQL deals with objects. Here is the sample query.
+
+	Query query = em.createQuery("select event from Event event");
+	
