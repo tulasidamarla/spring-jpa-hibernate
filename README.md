@@ -151,8 +151,8 @@ Set of entities that can be managed by a given EntityManager instance are define
 
 Mote: PersistenceContext works in a transactioncal context.
 
-To make the PersistenceContext work in a transactional context, the following configurations are required.
-1)Mark the service method with @Transactional
+To make the PersistenceContext work in a transactional context, the following configurations are required.<br>
+1)Mark the service method with @Transactional<br>
 2)Mark the Java configuration class with @EnableTransactionManagement
 
 Note: If it is xml, For step 2, use the following configuration.
