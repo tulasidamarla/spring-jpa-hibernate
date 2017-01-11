@@ -1,5 +1,6 @@
 package com.web.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,14 +13,16 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.web.validations.Phone;
 
 @Entity
-@Table(name="attendees")
+@Table(name="attendees",schema="eventtracker")
 public class Attendee {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	
 	@Size(min=2, max=30)
+	@Column(name="ATTENDEE_NAME",nullable=false)
 	private String name;
 	@NotEmpty @Email
 	private String email;

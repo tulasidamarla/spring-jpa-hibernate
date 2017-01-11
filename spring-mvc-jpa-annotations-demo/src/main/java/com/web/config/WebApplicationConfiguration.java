@@ -17,6 +17,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -30,6 +31,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
+@EnableTransactionManagement
 @ComponentScan(basePackages = "com.web")
 public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 
@@ -92,7 +94,7 @@ public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 	    entityManagerFactory.setDataSource(dataSource);
 	    entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 	    entityManagerFactory.setJpaDialect(new HibernateJpaDialect());
-	    entityManagerFactory.setPackagesToScan("com.web.model");
+	    entityManagerFactory.setPackagesToScan("com.web");
 	     
 	    entityManagerFactory.setJpaPropertyMap(hibernateJpaProperties());
 	    return entityManagerFactory;

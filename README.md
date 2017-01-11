@@ -40,7 +40,8 @@ JPA/Hibernate don't provide any transactions on their own. Application needs to 
 Datasource configuration be added using spring's org.springframework.jdbc.datasource.DriverManagerDatasource. we can also use third party libraries like apache.   
 DriverManagerDatasource class is present in spring-jdbc.jar file.
 
-Here is the sample jpaContext file.
+Sample XML configuration(jpaContext.xml)
+----------------------------------------
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<beans xmlns="http://www.springframework.org/schema/beans"
@@ -84,7 +85,8 @@ Here is the sample jpaContext file.
 	
 	</beans>
 
-To configure all the above 3 configuration using java, 
+Java Configuration
+------------------
 
 	@Bean
 	  public DataSource dataSource() {
@@ -124,4 +126,35 @@ To configure all the above 3 configuration using java,
 	    return jpaTransactionManager;
 	  }
 
-	  
+PersistenceContext
+------------------
+Spring provides @PersistenceContext annotation which injects entity manager into the application.
+This is used in the repository class like this.
+
+	@Repository("attendeeRepository")
+	public class AttendeeRepositoryImpl implements AttendeeService {
+
+		@PersistenceContext
+		private EntityManager em;
+		
+		@Override
+		public Attendee save(Attendee attendee) {
+			em.persist(attendee);
+			em.flush();
+			return attendee;
+		}
+	}
+
+Note: An EntityManager always associated with a persistence context. A persistent context is a set of entities. Within the persistence context, the entity instances and their lifecycle are managed. The EntityManager API is used to create and remove persistence entity instances.
+
+Set of entities that can be managed by a given EntityManager instance are defined by a persistence unit.
+
+Mote: PersistenceContext works in a transactioncal context.
+
+To make the PersistenceContext work in a transactional context, the following configurations are required.
+1)Mark the service method with @Transactional
+2)Mark the Java configuration class with @EnableTransactionManagement
+
+Note: If it is xml, For step 2, use the following configuration.
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
