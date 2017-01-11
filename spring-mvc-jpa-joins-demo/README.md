@@ -32,4 +32,3 @@ Note: Fetch type lazy will fail because jpa session is valid with in the transac
 	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
 
-		
