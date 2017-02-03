@@ -6,7 +6,7 @@ JPA needs persistent.xml file which is used define settings like DataSource, tra
 
 with spring we can have different configurations per environment, easier to test and dependency injection.
 
-Even with spring if xml configuration is preferred, even then an empty persistent.xml is required in src/main/resources/META-INF directory and can have any custom configuration file.
+Even with spring if xml configuration is preferred, then an empty persistent.xml is required in src/main/resources/META-INF directory and can have any custom configuration file.
 
 To develop an application using JPA, the following configuration changes are required for xml.
 
