@@ -1,4 +1,4 @@
-JPA is a specification to work with orm tools. It is used to accessing, persisting and managing data between java objects and relational databases. JPA is not SQL, it uses JPQL instead. It is heavily focused on POJOs.
+JPA is a specification to work with ORM tools. It is used for accessing, persisting and managing data between java objects and relational databases. JPA is not SQL, it uses JPQL instead. It is heavily focused on POJOs.
 
 There are a no of providers which implemented JPA specification. For ex, Hibernate, Top link, ObjectDB, OpenJPA, DataNucleus, Versant etc.
 
