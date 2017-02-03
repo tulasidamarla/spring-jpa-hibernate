@@ -1,6 +1,6 @@
 Projections
 -----------
-Projection is a greate way to present objects to UI.
+Projection is a great way to present objects to UI.
 
 Using Projections we can select the fields that are required and create an object out of the fields.<br> 
 Using projections complex joins can be done and the results are used to create projection objects.<br> 
