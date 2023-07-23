@@ -173,7 +173,8 @@ Entity Annotations
   - AUTO --> Automatically chooses an implementation based on the underlying database.<br>
   - IDENTITY --> used to specify an identity column in the database.<br>
   - SEQUENCE --> works with a database sequence if supports. (see the @SEQUENCEGENERATOR)<br>
-  - TABLE --> Specifies that a database will use an identity table and column to ensure uniqueness.(see @TableGenerator) <br>
+  - TABLE --> Specifies that a database will use an identity table and column to ensure uniqueness.(see @TableGenerator)
+- For more information on generation strategies refer [generation_types](https://www.javaguides.net/2018/12/hibernatejpa-primary-key-generation-stratergies.html) 
 		
 @Table
 ------
