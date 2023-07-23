@@ -209,4 +209,46 @@ Entity Annotations
 		
 	}
 ```
+Joins
+-----
+- Jpa is all about dealing with binding collection of objects to database.
+- There are four types of annotations to bind objects and collections to one another.
+  - @OneToOne
+  - @OneToMany
+  - @ManyToOne
+  - @ManyToMany
+
+- These 4 annotations are used with various configurations like Unidirectional, Bidirectional and Cascade.
+- @OneToOne is the simplest of all, whereas @ManyToMany is the complex one. Let's see an example of @OneToMany and @ManyToOne.
+- All the configuration is in the Entity objects.
+  - For ex, An event has a list of attendees.  
+```
+	@OneToMany(mappedBy="event", cascade=CascadeType.ALL)
+	private List<Attendee> attendees = new ArrayList<>();
+```
+  - Attendee Entity configuration
+```
+		@ManyToOne
+		private Event event;	
+```		
+- mappedBy field defines a property present in the other entity. i.e. In this example, event should be property name in Attendee Entity.		
+- JPA defines two types of fetching strategies name Eager and Lazy.
+  - Eager fetches the associated collection/object data when the original object was created.
+  - Lazy(default) fetches the associated object/collection data from DB, when the property is called.    
+```
+	@OneToMany(mappedBy="event", cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<Attendee> attendees = new ArrayList<>();
+```	
+- By default fetch type lazy will fail because jpa session is valid with in the transactional context.
+  - If application tries to lazily fetch once the transaction is completed an hibernate exception(org.hibernate.LazyInitializationException) is thrown.
+  - To fix this, the following configuration is required with PersistenceContext.
+```
+	@PersistenceContext(type=PersistenceContextType.EXTENDED)
+	private EntityManager em;
+```
+JPQL
+----
+JPQL is Java persistence Query Language. JPQL deals with objects. Here is the sample query.
+
+	Query query = em.createQuery("select event from Event event");
 	
