@@ -171,8 +171,16 @@ Entity Annotations
 - @Id --> defines Identifier attribute for a simple primary key type<br>
 - @GeneratedValue --> Used in conjection with @Id. There are four options to choose for Generated value.<br>
   - AUTO --> Automatically chooses an implementation based on the underlying database.<br>
-  - IDENTITY --> used to specify an identity column in the database.<br>
-  - SEQUENCE --> works with a database sequence if supports. (see the @SEQUENCEGENERATOR)<br>
+  - IDENTITY --> used to specify an identity column in the database. For example, when using Mysql, we can specify auto_increment in the definition of table to make it self-incremental, and then use `@GeneratedValue(strategy = GenerationType.IDENTITY)`.
+  - SEQUENCE --> works with a database sequence if supports. (see the @SEQUENCEGENERATOR). For ex,
+    ```
+    public class MyTable {
+	    @Id
+	    @SequenceGenerator(name="seq",sequenceName="oracle_seq")        
+	    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")               
+	    private Integer pid;
+	}
+    ```
   - TABLE --> Specifies that a database will use an identity table and column to ensure uniqueness.(see @TableGenerator)
 - For more information on generation strategies refer [generation_types](https://www.javaguides.net/2018/12/hibernatejpa-primary-key-generation-stratergies.html) 
 		
