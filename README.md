@@ -2,7 +2,7 @@ JPA is a specification to work with ORM tools. It is used for accessing, persist
 
 There are a no of providers which implemented JPA specification. For ex, Hibernate, Top link, ObjectDB, OpenJPA, DataNucleus, Versant etc.
 
-JPA needs persistent.xml file which is used define settings like DataSource, transaction manager ,caching etc.
+JPA needs persistent.xml file which has settings like DataSource, transaction manager ,caching etc.
 
 with spring we can have different configurations per environment, easier to test and dependency injection.
 
